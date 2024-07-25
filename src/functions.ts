@@ -1,18 +1,14 @@
 // @flow
-import { Dimensions } from 'react-native';
-import { Region } from 'react-native-maps';
-import type {
-  Cluster,
-  InnerCluster,
-  Point,
-} from './types';
+import { Dimensions } from "react-native";
+import { Region } from "react-native-maps";
+import type { Cluster, InnerCluster, Point } from "./types";
 
-const { height, width } = Dimensions.get('window');
+const { height, width } = Dimensions.get("window");
 
 export function calcDistanceSqr(marker1: Point, marker2: Point) {
   const { longitude: x1, latitude: y1 } = marker1;
   const { longitude: x2, latitude: y2 } = marker2;
-  return ((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2));
+  return (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
 }
 
 export function calcCenter(points: Array<Point>) {
@@ -30,7 +26,11 @@ export function calcCenter(points: Array<Point>) {
   };
 }
 
-export function convertPtInDistance(region: Region, distance: number, mapHeight: number = height) {
+export function convertPtInDistance(
+  region: Region,
+  distance: number,
+  mapHeight: number = height
+) {
   return (region.latitudeDelta / mapHeight) * distance;
 }
 
@@ -66,7 +66,10 @@ export function calcRegionForMarkers(markers: Array<Point>): Region {
   return region;
 }
 
-export function calcCommonMarkersCount(first: InnerCluster, second: InnerCluster): number {
+export function calcCommonMarkersCount(
+  first: InnerCluster,
+  second: InnerCluster
+): number {
   let commonMarkersCount = 0;
   for (let x = 0; x < first.points.length; x++) {
     for (let y = 0; y < second.points.length; y++) {
