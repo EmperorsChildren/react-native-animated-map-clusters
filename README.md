@@ -18,7 +18,7 @@ yarn add @emperorschildren/react-native-animated-map-clusters
 
 ```jsx harmony
 import { Marker } from "react-native-maps";
-import ClusteringMap from "react-native-animated-map-clusters";
+import ClusteringMap from "@emperorschildren/react-native-animated-map-clusters";
 import marker from "./marker.png";
 
 <ClusteringMap
